@@ -9,6 +9,7 @@
 
 ### 商品列表页
 所有数据均为localstorage中存储数据
+
 1. 随机生成顶部tag标签颜色
 2. 使用bootstrap实现表格排版
 3. 默认使用商品ID排序 通过过滤器orderby实现
