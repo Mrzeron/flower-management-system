@@ -153,12 +153,14 @@ myapp.controller('del_controller', ['$scope', '$window', '$timeout', function($s
             $scope.IDval = '';
             $scope.showTitle = false;
             $timeout(function() {
+              //操作成功提示
                 $scope.showTitle = true;
             }, 1000)
 
         } else {
             $scope.showWarn = true;
             $timeout(function() {
+              //操作失败提示
                 $scope.showWarn = false;
             }, 2000)
             $scope.IDval = '';
@@ -168,6 +170,7 @@ myapp.controller('del_controller', ['$scope', '$window', '$timeout', function($s
     }
     $scope.clearId = function() {
         $scope.IDval = '';
+        //清空内容
     }
     $scope.index = 2;
     $scope.$emit('changeIndex', $scope)
@@ -175,19 +178,23 @@ myapp.controller('del_controller', ['$scope', '$window', '$timeout', function($s
 }])
 
 myapp.controller('add_controller', ['$scope', '$window', '$timeout', function($scope, $window, $timeout) {
-    $scope.showTitle = false;
-    $scope.showWarn = false;
+    $scope.showTitle = false;//操作成功提示框开关
+    $scope.showWarn = false;//操作失败提示框开关
     $scope.addSp = function() {
+      //添加商品
         var shops = $window.JSON.parse($window.localStorage.getItem('shops'));
+        //判断ID是否存在
         if (!shops[$scope.sp.id]) {
             shops.push($scope.sp);
             $window.localStorage.setItem('shops', $window.JSON.stringify(shops));
             $scope.sp = '';
             $scope.showTitle = true;
+            //正确操作提示
             $timeout(function() {
                 $scope.showTitle = false;
             }, 700);
         } else {
+          //错误操作提示
             $scope.showWarn = true;
             $timeout(function() {
                 $scope.showWarn = false;
