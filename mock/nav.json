@@ -1,0 +1,17 @@
+[{
+    "name": "首页",
+    "target": "#/main",
+    "id":1
+}, {
+    "name": "商品列表",
+    "target": "#/list",
+    "id":2
+}, {
+    "name": "删除商品",
+    "target": "#/del",
+    "id":3    
+}, {
+    "name": "增加商品",
+    "target": "#/add",
+    "id":4
+}]

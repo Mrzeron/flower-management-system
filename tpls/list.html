@@ -1,0 +1,63 @@
+<div class="row" style="background: #ccc;">
+    <ul style="margin:0;padding:15px 10px;">
+        <li class="label" style="color:#333">常用种类:</li>
+        <li ng-repeat="item in lists" class="label {{listColor[$index]}}" style="margin:5px 10px">{{item}}</li>
+    </ul>
+</div>
+<div class="row table-responsive" style="padding-left:10px;">
+    <table class="table table-striped table-bordered  table-hover">
+        <tr>
+            <th>商品ID</th>
+            <th>名称</th>
+            <th>种类</th>
+            <th>价格</th>
+            <th>数量</th>
+            <th>折扣</th>
+            <th colspan="2" style="text-align: center;">操作</th>
+        </tr>
+        <tr ng-repeat="sp in shops | orderBy:softOnOff">
+            <!--点击可逐条修改-->
+            <td><span ng-show="edit[$index]" class="bold">{{sp.id}}</span>
+                <input class="form-control" ng-hide="edit[$index]" ng-model="sp.id">
+            </td>
+            <td><span ng-show="edit[$index]">{{sp.name}}</span>
+                <input class="form-control" ng-hide="edit[$index]" ng-model="sp.name">
+            </td>
+            <td><span ng-show="edit[$index]">{{sp.type}}</span>
+                <input class="form-control" ng-hide="edit[$index]" ng-model="sp.type">
+            </td>
+            <td><span ng-show="edit[$index]">{{sp.price}}</span>
+                <input class="form-control" ng-hide="edit[$index]" ng-model="sp.price">
+            </td>
+            <td><span ng-show="edit[$index]">{{sp.num}}</span>
+                <input class="form-control" ng-hide="edit[$index]" ng-model="sp.num">
+            </td>
+            <td><span ng-show="edit[$index]">{{sp.discount}}</span>
+                <input class="form-control" ng-hide="edit[$index]" ng-model="sp.discount">
+            </td>
+            <td style="text-align: center;"><span class="btn btn-primary btn-xs" ng-show="edit[$index]" ng-click="changeShops($index)">编辑</span><span class="btn btn-primary btn-xs" ng-hide="edit[$index]" ng-click="changeShopsSave($index)">保存</span></td>
+            <td style="text-align: center;"><span class="btn btn-warning btn-xs" ng-click="delTD($index,$event)"  data-toggle="modal" data-target="#myModal">删除</span></td>
+            <!--点击可逐条修改-->
+        </tr>
+    </table>
+</div>
+<div ng-show="alert_show" class="alert alert-success" role="alert" style="position:absolute;z-index:999;left:50%;top:50%;transform:translate(-50%,-50%)">操作成功啦</div>
+
+<!--是否删除该产品的模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" role="alert">你确定要删除该产品信息吗?删除后可能无法恢复</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancel">取消</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-sure" ng-click="changeSureValue()">确定删除</button>
+      </div>
+    </div>
+  </div>
+</div>

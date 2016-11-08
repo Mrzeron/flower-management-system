@@ -1,0 +1,12 @@
+<div class="form-group">
+    <div class="alert alert-info" role="alert" ng-show="showTitle">请输入要删除商品的唯一ID</div>
+    <div class="alert alert-success" role="alert" ng-hide="showTitle">删除ID为{{hadDel}}的商品成功</div>
+    <input type="text" class="form-control"  placeholder="ID" ng-model="IDval">
+    
+  </div>
+  <div style="text-align: center;">
+  	<button type="button" class="btn btn-warning" ng-click="delId()">确认删除</button>
+  	<button type="button" class="btn btn-success" ng-click="clearId()">清空输入</button>
+  	
+  </div>
+  <div class="alert alert-danger" role="alert" ng-show="showWarn">该商品不存在</div>

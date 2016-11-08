@@ -1,0 +1,28 @@
+body {
+    .container-fluid {
+    	overflow: hidden;
+        >.main_header {
+            background: #eee;
+        }
+    }
+}
+.item{
+  
+  transition: all ease-in .4s;
+}
+/*动画开始前*/
+ .item.ng-enter{
+  opacity: 0;
+ transform: translate(200px, 0);
+} 
+/*动画过程*/
+.item.ng-enter-active{
+  opacity: 1;
+ 	  
+}
+.item.ng-enter-stagger{/*ng-repeat提供了这个样式，来实现每一个item条目的依次执行某个动画 */
+ 
+  transition-delay:2s;
+  transition-duration:.1s;
+}
+
